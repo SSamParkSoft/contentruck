@@ -9,7 +9,7 @@ export function Approach() {
           <h2>아이디어를 실제 서비스로 만드는 방법</h2>
           <p>관찰에서 시작해 시장의 답을 듣기까지, 빠르고 유연하게 움직입니다.</p>
         </div>
-        <div className="approach-track" aria-label="콘텐츠럭의 서비스 제작 과정">
+        <div className="approach-track" aria-label="콘텐트럭의 서비스 제작 과정">
           {approachSteps.map((step, index) => (
             <article className="step-card" key={step.eyebrow}>
               <div className="step-top">

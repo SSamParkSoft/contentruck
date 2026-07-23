@@ -4,7 +4,7 @@ export function Direction() {
   return (
     <section className="section direction">
       <div className="container direction-layout">
-        <div className="direction-board" aria-label="동시에 탐색하고 제작하고 검증하는 콘텐츠럭의 프로젝트 구조">
+      <div className="direction-board" aria-label="동시에 탐색하고 제작하고 검증하는 콘텐트럭의 프로젝트 구조">
           <div className="board-header"><span>CONTENTRUCK STUDIO</span><i /><i /><i /></div>
           <div className="board-content">
             {projectStates.map((project, index) => (

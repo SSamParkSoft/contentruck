@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://contentruck.com"),
   title: "Contentruck | 문제를 발견하고 새로운 서비스를 만듭니다",
   description:
-    "콘텐츠럭은 사용자의 문제를 발견하고 AI와 자동화를 활용해 쉽고 유용한 디지털 서비스를 만드는 벤처스튜디오입니다.",
+    "콘텐트럭은 사용자의 문제를 발견하고 AI와 자동화를 활용해 쉽고 유용한 디지털 서비스를 만드는 벤처스튜디오입니다.",
   openGraph: {
     title: "Contentruck | 문제를 발견하고 새로운 서비스를 만듭니다",
     description:

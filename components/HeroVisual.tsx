@@ -20,7 +20,7 @@ export function HeroVisual() {
   }
 
   return (
-    <div className="hero-visual" ref={visual} onPointerMove={handleMove} onPointerLeave={reset} aria-label="문제 발견부터 서비스 구현까지 이어지는 콘텐츠럭의 제작 과정">
+    <div className="hero-visual" ref={visual} onPointerMove={handleMove} onPointerLeave={reset} aria-label="문제 발견부터 서비스 구현까지 이어지는 콘텐트럭의 제작 과정">
       <div className="visual-glow" />
       <div className="visual-grid" />
       <svg className="visual-lines" viewBox="0 0 600 500" fill="none" aria-hidden="true">

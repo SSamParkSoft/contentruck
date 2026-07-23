@@ -3,11 +3,26 @@ export function Footer() {
     <footer className="footer">
       <div className="container footer-main">
         <a className="wordmark footer-wordmark" href="#top"><span className="wordmark-mark">C</span> CONTENTRUCK</a>
-        <a href="mailto:contact@contentruck.com">contact@contentruck.com</a>
+        <a href="mailto:ceo@contentruck.co.kr">ceo@contentruck.co.kr</a>
       </div>
       <div className="container footer-bottom">
         <span>© 2026 Contentruck. All rights reserved.</span>
-        <div><span aria-disabled="true">개인정보처리방침</span><span aria-disabled="true">이용약관</span></div>
+        <div>
+          <a
+            href="https://jasper-chiller-0f4.notion.site/3a6e1d5d7567800ea950dac4b5c75390?source=copy_link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            개인정보처리방침
+          </a>
+          <a
+            href="https://jasper-chiller-0f4.notion.site/3a6e1d5d7567808fb8eaf9a2fcf3c55e?source=copy_link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            이용약관
+          </a>
+        </div>
       </div>
       <div className="container footer-business">
         <strong>주식회사 콘텐트럭</strong>
