@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "vinext build && cp dist/server/index.mjs dist/server/index.js && mkdir -p dist/.openai && cp .openai/hosting.json dist/.openai/hosting.json",
+    "build:vercel": "next build",
     "start": "next start",
     "lint": "next lint"
   },
