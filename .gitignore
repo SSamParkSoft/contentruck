@@ -5,6 +5,7 @@
 /.next/
 /out/
 /dist/
+/.vinext/
 
 # production
 /build
