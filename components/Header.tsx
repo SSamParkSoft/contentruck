@@ -3,15 +3,15 @@
 import { useEffect, useState } from "react";
 
 const links = [
-  { href: "#about", label: "About" },
+  { href: "#about", label: "Studio" },
   { href: "#approach", label: "Approach" },
   { href: "#principles", label: "Principles" },
   { href: "#contact", label: "Contact" },
 ];
 
 export function Header() {
-  const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 16);
@@ -20,39 +20,44 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => {
-    if (!open) return;
-    const close = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setOpen(false);
-    };
-    window.addEventListener("keydown", close);
-    return () => window.removeEventListener("keydown", close);
-  }, [open]);
-
   return (
     <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
-      <div className="header-inner">
-        <a className="wordmark" href="#top" aria-label="Contentruck 홈">
-          <span className="wordmark-mark" aria-hidden="true">C</span>
+      <div className="container header-inner">
+        <a className="logo" href="#top" aria-label="Contentruck 홈">
+          <span aria-hidden="true">C</span>
           CONTENTRUCK
         </a>
         <nav className="desktop-nav" aria-label="주요 메뉴">
-          {links.map((link) => <a href={link.href} key={link.href}>{link.label}</a>)}
+          {links.map((link) => (
+            <a href={link.href} key={link.href}>{link.label}</a>
+          ))}
         </nav>
+        <a className="header-contact" href="mailto:contact@contentruck.com">
+          Start a conversation
+          <span aria-hidden="true">↗</span>
+        </a>
         <button
           className="menu-button"
           type="button"
-          aria-label={open ? "메뉴 닫기" : "메뉴 열기"}
           aria-expanded={open}
           aria-controls="mobile-menu"
+          aria-label={open ? "메뉴 닫기" : "메뉴 열기"}
           onClick={() => setOpen((value) => !value)}
         >
-          <span /><span />
+          <span />
+          <span />
         </button>
       </div>
-      <nav id="mobile-menu" className={`mobile-nav ${open ? "is-open" : ""}`} aria-label="모바일 메뉴">
-        {links.map((link) => (
-          <a href={link.href} key={link.href} onClick={() => setOpen(false)}>{link.label}</a>
+      <nav
+        className={`mobile-nav ${open ? "is-open" : ""}`}
+        id="mobile-menu"
+        aria-label="모바일 메뉴"
+      >
+        {links.map((link, index) => (
+          <a href={link.href} key={link.href} onClick={() => setOpen(false)}>
+            <span>0{index + 1}</span>
+            {link.label}
+          </a>
         ))}
       </nav>
     </header>

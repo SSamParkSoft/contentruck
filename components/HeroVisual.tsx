@@ -6,55 +6,86 @@ export function HeroVisual() {
   const visual = useRef<HTMLDivElement>(null);
 
   function handleMove(event: React.PointerEvent<HTMLDivElement>) {
-    if (!visual.current || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (
+      !visual.current ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) return;
+
     const rect = visual.current.getBoundingClientRect();
-    const x = ((event.clientX - rect.left) / rect.width - 0.5) * 10;
-    const y = ((event.clientY - rect.top) / rect.height - 0.5) * 10;
-    visual.current.style.setProperty("--mx", `${x}px`);
-    visual.current.style.setProperty("--my", `${y}px`);
+    const x = ((event.clientX - rect.left) / rect.width - 0.5) * 12;
+    const y = ((event.clientY - rect.top) / rect.height - 0.5) * 12;
+    visual.current.style.setProperty("--visual-x", `${x}px`);
+    visual.current.style.setProperty("--visual-y", `${y}px`);
   }
 
   function reset() {
-    visual.current?.style.setProperty("--mx", "0px");
-    visual.current?.style.setProperty("--my", "0px");
+    visual.current?.style.setProperty("--visual-x", "0px");
+    visual.current?.style.setProperty("--visual-y", "0px");
   }
 
   return (
-    <div className="hero-visual" ref={visual} onPointerMove={handleMove} onPointerLeave={reset} aria-label="문제 발견부터 서비스 구현까지 이어지는 콘텐츠럭의 제작 과정">
-      <div className="visual-glow" />
-      <div className="visual-grid" />
-      <svg className="visual-lines" viewBox="0 0 600 500" fill="none" aria-hidden="true">
-        <path d="M125 125 C210 125 195 240 290 240" />
-        <path d="M125 375 C210 375 195 260 290 260" />
-        <path d="M365 250 C430 250 425 250 485 250" />
+    <div
+      className="hero-visual"
+      ref={visual}
+      onPointerMove={handleMove}
+      onPointerLeave={reset}
+      aria-label="문제가 서비스로 연결되는 과정을 표현한 그래픽"
+      role="img"
+    >
+      <div className="visual-coordinate coordinate-x">X / 127.04</div>
+      <div className="visual-coordinate coordinate-y">Y / 036.81</div>
+      <svg viewBox="0 0 620 500" aria-hidden="true">
+        <defs>
+          <marker
+            id="arrow"
+            markerWidth="8"
+            markerHeight="8"
+            refX="7"
+            refY="4"
+            orient="auto"
+          >
+            <path d="M0,0 L8,4 L0,8" fill="none" stroke="currentColor" />
+          </marker>
+        </defs>
+        <path className="visual-grid-line" d="M40 90H580M40 250H580M40 410H580" />
+        <path className="visual-grid-line" d="M110 45V455M310 45V455M510 45V455" />
+        <path
+          className="visual-route route-one"
+          d="M110 340 C185 340 205 160 310 160 S430 250 510 250"
+          markerEnd="url(#arrow)"
+        />
+        <path
+          className="visual-route route-two"
+          d="M110 250 C205 250 215 340 310 340 S420 160 510 160"
+        />
+        <circle className="visual-pulse pulse-one" cx="110" cy="340" r="7" />
+        <circle className="visual-pulse pulse-two" cx="310" cy="160" r="7" />
+        <circle className="visual-pulse pulse-three" cx="510" cy="250" r="7" />
       </svg>
-      <div className="process-card card-problem">
-        <span className="card-dot coral" />
-        <span className="card-label">Problem</span>
-        <strong>반복되는 불편</strong>
-        <div className="mini-lines"><i /><i /><i /></div>
+      <div className="visual-node node-problem">
+        <span>01</span>
+        <strong>PROBLEM</strong>
+        <small>OBSERVE</small>
       </div>
-      <div className="process-card card-signal">
-        <span className="card-dot mint" />
-        <span className="card-label">Signal</span>
-        <strong>사용자의 반응</strong>
-        <div className="signal-bars"><i /><i /><i /><i /></div>
+      <div className="visual-node node-idea">
+        <span>02</span>
+        <strong>IDEA</strong>
+        <small>DEFINE</small>
       </div>
-      <div className="process-card card-build">
-        <span className="build-icon">✦</span>
-        <span className="card-label">Build</span>
-        <strong>경험으로 구현</strong>
-        <span className="build-status">In progress <i /></span>
+      <div className="visual-node node-build">
+        <span>03</span>
+        <strong>BUILD</strong>
+        <small>EXECUTE</small>
       </div>
-      <div className="process-card card-service">
-        <div className="service-top"><span className="service-logo">C</span><span>Service</span></div>
-        <strong>작고 유용한 변화</strong>
-        <div className="service-ui"><i /><span><b /><b /><b /></span></div>
-        <span className="service-ready"><i /> Ready to use</span>
+      <div className="visual-node node-service">
+        <span>04</span>
+        <strong>SERVICE</strong>
+        <small>VALIDATE</small>
       </div>
-      <div className="floating-chip chip-idea">Idea</div>
-      <div className="floating-chip chip-validate">Validate</div>
-      <span className="node node-a" /><span className="node node-b" /><span className="node node-c" />
+      <div className="visual-caption">
+        <span>OPERATING MODEL</span>
+        <span>V.01 / LIVE</span>
+      </div>
     </div>
   );
 }
