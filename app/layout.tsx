@@ -2,30 +2,31 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "콘텐츠럭 | 문제를 발견하고, 새로운 서비스를 만듭니다",
+  metadataBase: new URL("https://contentruck.com"),
+  title: "Contentruck | 문제를 발견하고 새로운 서비스를 만듭니다",
   description:
     "콘텐츠럭은 사용자의 문제를 발견하고 AI와 자동화를 활용해 쉽고 유용한 디지털 서비스를 만드는 벤처스튜디오입니다.",
-  keywords: [
-    "콘텐츠럭",
-    "Contentruck",
-    "벤처스튜디오",
-    "AI 서비스",
-    "디지털 서비스",
-    "스타트업",
-  ],
   openGraph: {
-    title: "콘텐츠럭 | AI-Powered Venture Studio",
+    title: "Contentruck | 문제를 발견하고 새로운 서비스를 만듭니다",
     description:
-      "문제를 발견하고, AI와 자동화로 새로운 디지털 서비스를 만듭니다.",
+      "사용자에게 필요한 문제를 발견하고, AI와 자동화를 가장 사용하기 쉬운 서비스로 구현합니다.",
     type: "website",
     locale: "ko_KR",
+    siteName: "Contentruck",
   },
+  twitter: {
+    card: "summary",
+    title: "Contentruck | 문제를 발견하고 새로운 서비스를 만듭니다",
+    description:
+      "사용자의 문제에서 출발해 쉽고 유용한 디지털 서비스를 만드는 벤처스튜디오",
+  },
+  robots: { index: true, follow: true },
 };
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#ffffff",
+  themeColor: "#f7f9fc",
 };
 
 export default function RootLayout({
