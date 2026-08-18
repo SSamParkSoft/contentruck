@@ -1,26 +1,47 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 export function HeroVisual() {
   const visual = useRef<HTMLDivElement>(null);
+  const frame = useRef(0);
+  const pointer = useRef({ x: 0, y: 0 });
+
+  useEffect(() => () => {
+    if (frame.current) window.cancelAnimationFrame(frame.current);
+  }, []);
+
+  function renderPosition() {
+    const element = visual.current;
+    if (!element) return;
+    const { x, y } = pointer.current;
+    element.style.setProperty("--mx", `${x}px`);
+    element.style.setProperty("--my", `${y}px`);
+    element.style.setProperty("--mx-slow", `${x * -0.35}px`);
+    element.style.setProperty("--my-slow", `${y * -0.35}px`);
+    frame.current = 0;
+  }
 
   function handleMove(event: React.PointerEvent<HTMLDivElement>) {
-    if (!visual.current || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (
+      !visual.current ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+      !window.matchMedia("(hover: hover) and (pointer: fine)").matches
+    ) return;
     const rect = visual.current.getBoundingClientRect();
     const x = ((event.clientX - rect.left) / rect.width - 0.5) * 10;
     const y = ((event.clientY - rect.top) / rect.height - 0.5) * 10;
-    visual.current.style.setProperty("--mx", `${x}px`);
-    visual.current.style.setProperty("--my", `${y}px`);
+    pointer.current = { x, y };
+    if (!frame.current) frame.current = window.requestAnimationFrame(renderPosition);
   }
 
   function reset() {
-    visual.current?.style.setProperty("--mx", "0px");
-    visual.current?.style.setProperty("--my", "0px");
+    pointer.current = { x: 0, y: 0 };
+    if (!frame.current) frame.current = window.requestAnimationFrame(renderPosition);
   }
 
   return (
-    <div className="hero-visual" ref={visual} onPointerMove={handleMove} onPointerLeave={reset} aria-label="문제 발견부터 서비스 구현까지 이어지는 콘텐트럭의 제작 과정">
+    <div className="hero-visual hero-entry hero-entry-visual" ref={visual} onPointerMove={handleMove} onPointerLeave={reset} aria-label="문제 발견부터 서비스 구현까지 이어지는 콘텐트럭의 제작 과정">
       <div className="visual-glow" />
       <div className="visual-grid" />
       <svg className="visual-lines" viewBox="0 0 600 500" fill="none" aria-hidden="true">

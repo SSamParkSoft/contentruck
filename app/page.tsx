@@ -5,11 +5,13 @@ import { Direction } from "@/components/Direction";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
+import { MotionEnhancer } from "@/components/MotionEnhancer";
 import { Principles } from "@/components/Principles";
 
 export default function Home() {
   return (
     <>
+      <MotionEnhancer />
       <Header />
       <main>
         <Hero />

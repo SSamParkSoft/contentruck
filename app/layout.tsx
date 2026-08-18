@@ -13,12 +13,21 @@ export const metadata: Metadata = {
     type: "website",
     locale: "ko_KR",
     siteName: "Contentruck",
+    images: [
+      {
+        url: "/og.png",
+        width: 1731,
+        height: 909,
+        alt: "Contentruck — 문제를 발견하고 새로운 서비스를 만듭니다",
+      },
+    ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "Contentruck | 문제를 발견하고 새로운 서비스를 만듭니다",
     description:
       "사용자의 문제에서 출발해 쉽고 유용한 디지털 서비스를 만드는 벤처스튜디오",
+    images: ["/og.png"],
   },
   robots: { index: true, follow: true },
 };

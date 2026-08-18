@@ -1,11 +1,11 @@
 export function Footer() {
   return (
     <footer className="footer">
-      <div className="container footer-main">
+      <div className="container footer-main" data-reveal>
         <a className="wordmark footer-wordmark" href="#top"><span className="wordmark-mark">C</span> CONTENTRUCK</a>
         <a href="mailto:ceo@contentruck.co.kr">ceo@contentruck.co.kr</a>
       </div>
-      <div className="container footer-bottom">
+      <div className="container footer-bottom" data-reveal>
         <span>© 2026 Contentruck. All rights reserved.</span>
         <div>
           <a
@@ -24,7 +24,7 @@ export function Footer() {
           </a>
         </div>
       </div>
-      <div className="container footer-business">
+      <div className="container footer-business" data-reveal>
         <strong>주식회사 콘텐트럭</strong>
         <div className="footer-business-meta">
           <span>대표자: 박종인</span>
